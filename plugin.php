@@ -2,6 +2,9 @@
 namespace Marvel;
 
 use Marvel\Widgets\Marvel_Heading;
+use Marvel\Widgets\Marvel_About_Box;
+use Marvel\Widgets\Marvel_Who_We_Are;
+use Marvel\Widgets\Marvel_Feature_Box;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -59,6 +62,9 @@ class Plugin {
 	 */
 	private function includes() {
 		require __DIR__ . '/widgets/heading.php';
+		require __DIR__ . '/widgets/about-box.php';
+		require __DIR__ . '/widgets/who-we-are.php';
+		require __DIR__ . '/widgets/feature-item-box.php';
 		
 	}
 
@@ -71,6 +77,9 @@ class Plugin {
 	 */
 	private function register_widget() {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Heading() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_About_Box() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Who_We_Are() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Feature_Box() );
 		
 	}
 }

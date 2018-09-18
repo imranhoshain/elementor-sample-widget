@@ -3,13 +3,14 @@ namespace Marvel\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * @since 1.1.0
  */
-class Marvel_Heading extends Widget_Base {
+class Marvel_About_Box extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
@@ -21,7 +22,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'marvel-heading';
+		return 'marvel-about-box';
 	}
 
 	/**
@@ -34,7 +35,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Marvel Heading', 'marvel-toolkit' );
+		return __( 'Marvel About Section', 'marvel-toolkit' );
 	}
 
 	/**
@@ -47,7 +48,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-heading';
+		return 'fa fa-newspaper-o';
 	}
 
 	/**
@@ -81,43 +82,77 @@ class Marvel_Heading extends Widget_Base {
   		
         // Content Controls
   		$this->start_controls_section(
-  			'marvel_heading',
+  			'marvel_about_box',
   			[
-  				'label' => esc_html_x( 'Heading','Admin Panel','marvel-toolkit' )
+  				'label' => esc_html_x( 'About Box','Admin Panel','marvel-toolkit' )
   			]
   		); 
  
+		$this->add_control(
+			'ab_condition',
+			[
+				'label' => __( 'Select Option', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'default' => __( 'Default', 'elementor' ),					
+					'image' => __( 'Image Box', 'elementor' ),					
+				],				
+			]
+		);       
+        
+        $this->add_control(
+			'about_box_icon',
+			[
+				'label' => __( 'Select Icon', 'elementor' ),
+				'type' => Controls_Manager::ICON,
+				'label_block' => true,
+				'default' => [
+					'default' => 'fa fa-star',
+				],
+				'condition' => [
+					'ab_condition' => 'default',
+					
+				],
+				
+			]
+		);
+        
 
 		$this->add_control(
-			'marvel_title',
+			'about_box_image',
 			[
-				'label' => esc_html_x("Heading Title", 'Admin Panel','marvel-toolkit'),
+				'label' => __( 'Choose Image', 'elementor' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+				'condition' => [
+					'ab_condition' => 'image',				
+					
+				],
+				
+			]
+		);
+        
+        $this->add_control(
+			'about_box_title',
+			[
+				'label' => esc_html_x("ABout Box Title", 'Admin Panel','marvel-toolkit'),
 				'type' => Controls_Manager::TEXT,
-				'default' => esc_html_x("Heading Text", 'Admin Panel','marvel-toolkit'),			
+				'default' => esc_html_x("Awesome Features", 'Admin Panel','marvel-toolkit'),			
 			]
 		); 
         
         $this->add_control(
-			'marvel_sub_title',
+			'about_box_detail',
 			[
-				'label' => esc_html_x("Heading sub title", 'Admin Panel','marvel-toolkit'),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html_x("This is your sub title", 'Admin Panel','marvel-toolkit'),			
+				'label' => 'About Box Detail',
+				'type' => Controls_Manager::WYSIWYG,
+				'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elitelquam. Fusce quis nulla tincidunt interdum magna vitae.', 'elementor' ),
 			]
-		); 
-        
-        $this->add_control(
-			'marvel_sub_title_position',
-			[
-				'label' => esc_html_x("Heading sub title Position", 'Admin Panel','marvel-toolkit'),
-				'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Ex: 30 (it means 30%)', 'elementor' ),
-                'default' => esc_html_x("30", 'Admin Panel','marvel-toolkit'),
-			]
-		); 
+		);
 
-		$this->end_controls_section();
-        
+		$this->end_controls_section();        
 		
 	}
 
@@ -134,7 +169,7 @@ class Marvel_Heading extends Widget_Base {
         
 		$settings = $this->get_settings();             
 
-    echo marvel_heading_shortcode ($settings);            
+    echo marvel_about_box_shortcode ($settings);            
 
 
 	}

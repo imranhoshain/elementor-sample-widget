@@ -3,13 +3,14 @@ namespace Marvel\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * @since 1.1.0
  */
-class Marvel_Heading extends Widget_Base {
+class Marvel_Who_We_Are extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
@@ -21,7 +22,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'marvel-heading';
+		return 'marvel-who-we-are';
 	}
 
 	/**
@@ -34,7 +35,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Marvel Heading', 'marvel-toolkit' );
+		return __( 'Who We Are', 'marvel-toolkit' );
 	}
 
 	/**
@@ -47,7 +48,7 @@ class Marvel_Heading extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-heading';
+		return 'eicon-icon-box';
 	}
 
 	/**
@@ -81,43 +82,43 @@ class Marvel_Heading extends Widget_Base {
   		
         // Content Controls
   		$this->start_controls_section(
-  			'marvel_heading',
+  			'who_we_are',
   			[
-  				'label' => esc_html_x( 'Heading','Admin Panel','marvel-toolkit' )
+  				'label' => esc_html_x( 'Who We Are','Admin Panel','marvel-toolkit' )
   			]
   		); 
- 
-
-		$this->add_control(
-			'marvel_title',
-			[
-				'label' => esc_html_x("Heading Title", 'Admin Panel','marvel-toolkit'),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html_x("Heading Text", 'Admin Panel','marvel-toolkit'),			
-			]
-		); 
         
         $this->add_control(
-			'marvel_sub_title',
+			'who_we_are_logo',
 			[
-				'label' => esc_html_x("Heading sub title", 'Admin Panel','marvel-toolkit'),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html_x("This is your sub title", 'Admin Panel','marvel-toolkit'),			
+				'label' => __( 'We are logo', 'elementor' ),
+				'type' => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
 			]
-		); 
+		);
         
         $this->add_control(
-			'marvel_sub_title_position',
+			'who_we_are_title',
 			[
-				'label' => esc_html_x("Heading sub title Position", 'Admin Panel','marvel-toolkit'),
+				'label' => __( 'We wre title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Ex: 30 (it means 30%)', 'elementor' ),
-                'default' => esc_html_x("30", 'Admin Panel','marvel-toolkit'),
+				'placeholder' => __( 'Enter your title', 'elementor' ),
+				'default' => __( 'WHO WE ARE', 'elementor' ),
 			]
-		); 
+		);
+        $this->add_control(
+			'who_we_are_detail',
+			[
+				'label' => __( 'We wre detail', 'elementor' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'placeholder' => __( 'Enter your detail', 'elementor' ),
+				'default' => __( 'Lorem ipsum dolor sit amet, consectetuer ux adipiscing elit, sed diam nonummy nibh and euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.', 'elementor' ),
+			]
+		);
 
-		$this->end_controls_section();
-        
+		$this->end_controls_section();        
 		
 	}
 
@@ -134,7 +135,7 @@ class Marvel_Heading extends Widget_Base {
         
 		$settings = $this->get_settings();             
 
-    echo marvel_heading_shortcode ($settings);            
+    echo marvel_who_we_are_shortcode ($settings);            
 
 
 	}

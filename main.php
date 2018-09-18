@@ -91,3 +91,18 @@ include_once ('shortcodes/custom-post.php');
  * Implement Find me Addons.
  */
 include_once ('shortcodes/heading-shortcode.php');
+
+/**
+ * Implement Find me Addons.
+ */
+include_once ('shortcodes/about-box-shortcode.php');
+
+/**
+ * Implement Find me Addons.
+ */
+include_once ('shortcodes/who-we-are-shortcode.php');
+
+/**
+ * Implement Find me Addons.
+ */
+include_once ('shortcodes/feature-box-shortcode.php');
