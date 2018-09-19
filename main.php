@@ -106,3 +106,13 @@ include_once ('shortcodes/who-we-are-shortcode.php');
  * Implement Find me Addons.
  */
 include_once ('shortcodes/feature-box-shortcode.php');
+
+/**
+ * Implement Find me Addons.
+ */
+include_once ('shortcodes/portfolio-shortcode.php');
+
+/**
+ * Implement Find me Addons.
+ */
+include_once ('shortcodes/team-box-shortcode.php');

@@ -5,6 +5,8 @@ use Marvel\Widgets\Marvel_Heading;
 use Marvel\Widgets\Marvel_About_Box;
 use Marvel\Widgets\Marvel_Who_We_Are;
 use Marvel\Widgets\Marvel_Feature_Box;
+use Marvel\Widgets\Marvel_Portfolio_Section;
+use Marvel\Widgets\Marvel_Team;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -65,6 +67,8 @@ class Plugin {
 		require __DIR__ . '/widgets/about-box.php';
 		require __DIR__ . '/widgets/who-we-are.php';
 		require __DIR__ . '/widgets/feature-item-box.php';
+		require __DIR__ . '/widgets/portfolio-section.php';
+		require __DIR__ . '/widgets/marvel-team.php';
 		
 	}
 
@@ -80,6 +84,8 @@ class Plugin {
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_About_Box() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Who_We_Are() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Feature_Box() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Portfolio_Section() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Marvel_Team() );
 		
 	}
 }

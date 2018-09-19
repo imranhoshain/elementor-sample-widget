@@ -19,7 +19,7 @@ function marvel_feature_box_shortcode($atts)
             <i class="<?php echo $feature_icon;?>" aria-hidden="true"></i>
         </div>
         <h5><?php echo $feature_title;?></h5>
-        <p><?php echo $feature_detail;?></p>
+        <?php echo $feature_detail;?>
     </div>
     
     <?php } elseif ($ab_condition == 'creative'){   ?>
@@ -30,7 +30,7 @@ function marvel_feature_box_shortcode($atts)
         </div>
         <div class="creative-text">
             <h5><?php echo $feature_title;?></h5>
-        <p><?php echo $feature_detail;?></p>
+        <?php echo $feature_detail;?>
         </div>
     </div>
     
